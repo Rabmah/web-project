@@ -3,16 +3,14 @@ import { useState } from "react";
 import { Alert, Button, Input, Snackbar } from "@mui/material";
 //import { Delete, Person } from "@mui/icons-material";
 import { firebaseAuth } from "../firebaseHelper";
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
 
 
-async function handleSignUp(setopen, seterror) {
+async function handleSignIn(setopen, seterror) {
     try {
         const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-
-        await firebaseAuth.createUserWithEmailAndPassword(email, password);
-        seterror("Success");
+        await firebaseAuth.sendPasswordResetEmail(email);
+        seterror("Login Success")
     }
     catch (e) {
         setopen(true);
@@ -20,19 +18,20 @@ async function handleSignUp(setopen, seterror) {
     }
 }
 
-export function SignUp(props) {
+export function ResetPassword(props) {
     const [errors, setErrors] = useState();
     const [isopen, setIsopen] = useState(false);
     let navigate = useNavigate();
     useEffect(() => {
-        if (errors === 'Success')
+        if (errors === "Login Success")
             navigate("/");
-    }, [navigate, errors]);
+    }, [navigate, errors])
     return (
         <div>
             <Input id="email" placeholder="email" type="email"></Input>
             <Input id="password" placeholder="password" type="password"></Input>
-            <Button onClick={() => { handleSignUp(setIsopen, setErrors) }}>Sign up</Button>
+            <Button onClick={() => { handleSignIn(setIsopen, setErrors) }}>Sign in</Button>
+            <Link to="/SignUp">sign up</Link>
             <Snackbar anchorOrigin={{ horizontal: "center", vertical: "top" }} open={isopen}
                 onClose={() => { setIsopen(false) }}
                 autoHideDuration={3000}>

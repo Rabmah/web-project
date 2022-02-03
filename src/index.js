@@ -1,18 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { App2 } from './App2';
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { SignIn } from './components/authentication/SignIn';
+import { SignUp } from './components/authentication/SignUp';
+import { Store } from './components/Store/Store';
+import { ResetPassword } from './components/authentication/ResetPassword';
+
 
 ReactDOM.render(
-  <BrowserRouter>
+  <Router>
     <Routes>
       <Route path="/" element={<SignIn />} />
-      <Route path="/2" element={<App2 />} />
+      <Route path="/SignUp" element={<SignUp />} />
+      <Route path="/Store" element={<Store />} />
+      <Route path="/ResetPassword" element={<ResetPassword />} />
 
     </Routes>
-  </BrowserRouter>,
+  </Router>,
   document.getElementById('root')
 );
 
