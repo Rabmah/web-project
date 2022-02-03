@@ -18,14 +18,14 @@ async function handleSignIn(setopen, seterror) {
     }
 }
 
-export function SignIn(props) {
+export function SignUp(props) {
     const [errors, setErrors] = useState();
     const [isopen, setIsopen] = useState(false);
     return (
         <div>
             <Input id="email" placeholder="email" type="email"></Input>
             <Input id="password" placeholder="password" type="password"></Input>
-            <Button onClick={() => { handleSignIn(setIsopen, setErrors) }}>Sign in</Button>
+            <Button onClick={() => { handleSignIn(setIsopen, setErrors) }}>Sign up</Button>
             <Snackbar anchorOrigin={{ horizontal: "center", vertical: "top" }} open={isopen}
                 onClose={() => { setIsopen(false) }}
                 autoHideDuration={3000}>
