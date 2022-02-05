@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Alert, Button, Input, Snackbar } from "@mui/material";
+import { Alert, Button, Snackbar } from "@mui/material";
 //import { Delete, Person } from "@mui/icons-material";
 import { firebaseAuth } from "../firebaseHelper";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
-async function handleSignIn(setopen, seterror) {
+async function handleStore(setopen, seterror) {
     try {
 
         await firebaseAuth.signOut();
         setopen(true);
-        seterror("Login Success")
+        seterror("Logout Success");
     }
     catch (e) {
         setopen(true);
@@ -36,10 +36,7 @@ export function Store(props) {
     })
     return (
         <div>
-            <Input id="email" placeholder="email" type="email"></Input>
-            <Input id="password" placeholder="password" type="password"></Input>
-            <Button onClick={() => { handleSignIn(setIsopen, setErrors) }}>Sign in</Button>
-            <Link to="/SignUp">sign up</Link>
+            <Button onClick={() => { handleStore(setIsopen, setErrors) }}>Exit</Button>
             <Snackbar anchorOrigin={{ horizontal: "center", vertical: "top" }} open={isopen}
                 onClose={() => { setIsopen(false) }}
                 autoHideDuration={3000}>

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Alert, Button, Card, CardContent, Grid, Input, Snackbar, Stack } from "@mui/material";
-//import { Delete, Person } from "@mui/icons-material";
+import { Delete } from "@mui/icons-material";
 import { firebaseAuth } from "../firebaseHelper";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -36,15 +36,22 @@ export function SignIn(props) {
         <div>
             <Grid container justifyContent={"center"} minHeight={"100vh"} alignItems={"center"}>
                 <Grid item md={4}>
-                    <Card style={{ backgroundColor: "red" }} variant="elevation">
+                    <Card style={{ backgroundColor: "white" }} variant="elevation">
                         <CardContent>
                             <Stack spacing={2}>
-                                <Input id="email" placeholder="email" type="email"></Input>
+                                <h2>Welcome To Our Site</h2>
+                                <label htmlFor="email"><b>Email</b></label>
+                                <Input id="email" placeholder="email" type="email" starticon={<Delete />}></Input>
+                                <label htmlFor="password"><b>Password</b></label>
                                 <Input id="password" placeholder="password" type="password"></Input>
                                 <Button style={{ Width: "auto" }} onClick={() => { handleSignIn(setIsopen, setErrors) }}>Sign in</Button>
                                 <div>
-                                    hello abu samha
+                                    If you not have an account please
                                     <Link to="/SignUp"> sign up</Link>
+                                </div>
+                                <div>
+                                    If you forget your password
+                                    <Link to="/ResetPassword"> reset password</Link>
                                 </div>
                             </Stack>
                         </CardContent>
@@ -56,7 +63,7 @@ export function SignIn(props) {
                 autoHideDuration={3000}>
                 <Alert severity="error"> {errors} </Alert>
             </Snackbar>
-        </div>
+        </div >
 
     );
 }

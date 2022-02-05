@@ -1,18 +1,20 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Alert, Button, Input, Snackbar } from "@mui/material";
+import { Alert, Button, Card, CardContent, Grid, Input, Snackbar, Stack } from "@mui/material";
 //import { Delete, Person } from "@mui/icons-material";
 import { firebaseAuth } from "../firebaseHelper";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 
 async function handleSignUp(setopen, seterror) {
     try {
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
-
-        await firebaseAuth.createUserWithEmailAndPassword(email, password);
-        seterror("Success");
+        const repeatpass = document.getElementById("repeat-password").value;
+        if (password === repeatpass) {
+            await firebaseAuth.createUserWithEmailAndPassword(email, password);
+            seterror("Success");
+        }
     }
     catch (e) {
         setopen(true);
@@ -30,9 +32,24 @@ export function SignUp(props) {
     }, [navigate, errors]);
     return (
         <div>
-            <Input id="email" placeholder="email" type="email"></Input>
-            <Input id="password" placeholder="password" type="password"></Input>
-            <Button onClick={() => { handleSignUp(setIsopen, setErrors) }}>Sign up</Button>
+            <Grid container justifyContent={"center"} minHeight={"100vh"} alignItems={"center"}>
+                <Grid item md={4}>
+                    <Card style={{ backgroundColor: "white" }} variant="elevation">
+                        <CardContent>
+                            <Stack spacing={2}>
+                                <h2>Sign Up</h2>
+                                <label htmlFor="email"><b>Email</b></label>
+                                <Input id="email" placeholder="email" type="email"></Input>
+                                <label htmlFor="password"><b>Password</b></label>
+                                <Input id="password" placeholder="password" type="password"></Input>
+                                <label htmlFor="password"><b>Repeat Password</b></label>
+                                <Input id="repeat-password" placeholder="repeat password" type="password"></Input>
+                                <Button onClick={() => { handleSignUp(setIsopen, setErrors) }}>Regesterd</Button>
+                            </Stack>
+                        </CardContent>
+                    </Card>
+                </Grid>
+            </Grid>
             <Snackbar anchorOrigin={{ horizontal: "center", vertical: "top" }} open={isopen}
                 onClose={() => { setIsopen(false) }}
                 autoHideDuration={3000}>
