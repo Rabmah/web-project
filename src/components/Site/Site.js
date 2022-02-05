@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Alert, Button, Snackbar } from "@mui/material";
+import { Alert, AppBar, Button, Snackbar } from "@mui/material";
 //import { Delete, Person } from "@mui/icons-material";
 import { firebaseAuth } from "../firebaseHelper";
 import { useNavigate } from "react-router-dom";
 
 
-async function handleStore(setopen, seterror) {
+async function handleSite(setopen, seterror) {
     try {
 
         await firebaseAuth.signOut();
@@ -19,7 +19,7 @@ async function handleStore(setopen, seterror) {
     }
 }
 
-export function Store(props) {
+export function Site(props) {
     const [errors, setErrors] = useState();
     const [isopen, setIsopen] = useState(false);
     let navigate = useNavigate();
@@ -27,7 +27,7 @@ export function Store(props) {
         return firebaseAuth.onAuthStateChanged(u => {
             if (u) {
                 // yes user
-                // navigate('/Store');
+                // navigate('/Site');
             } else {
                 // no user
                 navigate("/");
@@ -36,7 +36,10 @@ export function Store(props) {
     })
     return (
         <div>
-            <Button onClick={() => { handleStore(setIsopen, setErrors) }}>Exit</Button>
+            <AppBar>
+
+            </AppBar>
+            <Button onClick={() => { handleSite(setIsopen, setErrors) }}>Exit</Button>
             <Snackbar anchorOrigin={{ horizontal: "center", vertical: "top" }} open={isopen}
                 onClose={() => { setIsopen(false) }}
                 autoHideDuration={3000}>
