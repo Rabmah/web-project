@@ -14,7 +14,7 @@ async function handleResetPassword(setopen, seterror) {
     }
     catch (e) {
         setopen(true);
-        seterror(e.code);
+        seterror("email not found");
     }
 }
 

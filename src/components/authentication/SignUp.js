@@ -11,14 +11,21 @@ async function handleSignUp(setopen, seterror) {
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
         const repeatpass = document.getElementById("repeat-password").value;
-        if (password === repeatpass) {
+        if (password === "" || repeatpass === "") {
+            seterror("enter password");
+            throw new Error();
+        }
+        else if (password === repeatpass) {
             await firebaseAuth.createUserWithEmailAndPassword(email, password);
             seterror("Success");
+        }
+        else {
+            seterror("password worng");
+            throw new Error();
         }
     }
     catch (e) {
         setopen(true);
-        seterror(e.code);
     }
 }
 
