@@ -6,7 +6,7 @@ import { SignIn } from './components/authentication/SignIn';
 import { SignUp } from './components/authentication/SignUp';
 import { Site } from './components/Site/Site';
 import { ResetPassword } from './components/authentication/ResetPassword';
-
+import { Hotels } from './components/Site/Hotels'
 
 ReactDOM.render(
   <Router>
@@ -15,6 +15,7 @@ ReactDOM.render(
       <Route path="/SignUp" element={<SignUp />} />
       <Route path="/Site" element={<Site />} />
       <Route path="/ResetPassword" element={<ResetPassword />} />
+      <Route path="/Site/Hotels" element={<Hotels />} />
 
     </Routes>
   </Router>,
