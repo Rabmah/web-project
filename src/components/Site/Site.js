@@ -6,6 +6,7 @@ import { firebaseAuth } from "../firebaseHelper";
 import { useNavigate } from "react-router-dom";
 import { NavBar } from "./AppBar";
 import { MenuCards } from "./MenuCard";
+import Footer from "./Footer";
 
 export const pages = ['Hotels', 'Restaurants', 'Things to do'];
 //hotels צימרים
@@ -53,7 +54,9 @@ export function Site(props) {
           autoHideDuration={3000}>
           <Alert severity="error"> {errors} </Alert>
         </Snackbar>
+        <Footer></Footer>
       </div>
     </div>
   );
 }
+
