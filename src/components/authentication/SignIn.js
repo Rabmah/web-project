@@ -6,19 +6,29 @@ import { firebaseAuth } from "../firebaseHelper";
 import { Link, useNavigate } from "react-router-dom";
 import background from "../../pictuers/golanH.png";
 
-
 async function handleSignIn(setopen, seterror) {
     try {
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
 
+        if (email === "" && password === "") {
+            seterror("please enter email and password");
+            throw new Error("1");
+        } else if (email === "") {
+            seterror("please enter email");
+            throw new Error("2");
+        } else if (password === "") {
+            seterror("please enter password");
+            throw new Error("3");
+        }
+
+        seterror("email or password wrong");
         await firebaseAuth.signInWithEmailAndPassword(email, password);
         setopen(true);
-        seterror("Login Success")
+        seterror("Login Success");
     }
     catch (e) {
         setopen(true);
-        seterror("email or password wrong");
     }
 }
 
@@ -35,10 +45,10 @@ export function SignIn(props) {
         })
     }, [navigate])
     return (
-        <div style={{ backgroundImage: `url(${background})` }}>
+        <div style={{ backgroundSize: "cover", backgroundImage: `url(${background})` }} >
             <Grid container justifyContent={"center"} minHeight={"100vh"} alignItems={"center"}>
                 <Grid item md={4}>
-                    <Card style={{ backgroundColor: "white" }} variant="elevation">
+                    <Card style={{ background: "rgba(255,255,255,.7)" }} variant="elevation">
                         <CardContent>
                             <Stack spacing={2}>
                                 <h2>Welcome To Our Site</h2>
@@ -46,7 +56,7 @@ export function SignIn(props) {
                                 <Input id="email" placeholder="email" type="email"></Input>
                                 <label htmlFor="password"><b>Password</b></label>
                                 <Input id="password" placeholder="password" type="password"></Input>
-                                <Button style={{ Width: "auto" }} onClick={() => { handleSignIn(setIsopen, setErrors) }}>Sign in</Button>
+                                <Button style={{ Width: "auto", fontWeight: 'medium' }} onClick={() => { handleSignIn(setIsopen, setErrors) }}>Sign in</Button>
                                 <div>
                                     If you not have an account please
                                     <Link to="/SignUp"> sign up</Link>
@@ -68,4 +78,3 @@ export function SignIn(props) {
         </div>
     );
 }
-

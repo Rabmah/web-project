@@ -4,6 +4,7 @@ import { Alert, Button, Card, CardContent, Grid, Input, Snackbar, Stack } from "
 //import { Delete, Person } from "@mui/icons-material";
 import { firebaseAuth } from "../firebaseHelper";
 import { useNavigate } from "react-router-dom";
+import background from "../../pictuers/golanH.png";
 
 
 async function handleResetPassword(setopen, seterror) {
@@ -27,10 +28,10 @@ export function ResetPassword(props) {
             navigate("/");
     }, [navigate, errors])
     return (
-        <div>
+        <div style={{ backgroundSize: "cover", backgroundImage: `url(${background})` }}>
             <Grid container justifyContent={"center"} minHeight={"100vh"} alignItems={"center"}>
                 <Grid item md={4}>
-                    <Card style={{ backgroundColor: "white" }} variant="elevation">
+                    <Card style={{ background: "rgba(255,255,255,.7)" }} variant="elevation">
                         <CardContent>
                             <Stack spacing={2}>
                                 <h2>Forget Password</h2>
