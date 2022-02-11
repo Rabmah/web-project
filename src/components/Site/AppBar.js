@@ -33,7 +33,7 @@ export function NavBar(props) {
   }
   return (
     <div>
-      <AppBar>
+      <AppBar color="primary">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
@@ -103,8 +103,8 @@ export function NavBar(props) {
 
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Exit">
-                <IconButton sx={{ p: 0 }}>
-                  <ExitToAppIcon onClick={handleExit} fontSize="large" />
+                <IconButton sx={{ p: 0, color: "white" }}>
+                  <ExitToAppIcon onClick={handleExit} fontSize="large" color="white" />
                 </IconButton>
               </Tooltip>
             </Box>

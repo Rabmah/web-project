@@ -1,8 +1,23 @@
-import { Card, CardContent, Grid, Stack } from "@mui/material";
+import { autocompleteClasses, Card, CardContent, CardMedia, Grid, Stack, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-import { Image } from "@mui/icons-material";
-
+//import { Image } from "@mui/icons-material";
+const partners = [
+    {
+        photo: `${process.env.PUBLIC_URL}/assets/food.jpg`,
+        title: "Jameel",
+        body: ["Hello I'm enthusiastic to know if our site liked you or not.", "This is the first site to know about traviling in Golan Hights.",
+            "Here is my phone number if you want to call me."],
+        phonenumber: "0507654321"
+    },
+    {
+        photo: `${process.env.PUBLIC_URL}/assets/food.jpg`,
+        title: "Rabea",
+        body: ["Hello every one please if you enjoy the site come back again.", "And dont forget to tell your frinds about as.",
+            "Here is my phone number if you want to call me."],
+        phonenumber: "0501234567"
+    },
+];
 
 const data = [
     {
@@ -30,31 +45,31 @@ const data = [
             "check here"],
         link: ""
     }
-]
+];
 
 
-var cardStyle = {
+/*var cardStyle = {
     display: 'block',
     width: '150vw',
     transitionDuration: '0.3s',
     height: '150vw'
-}
+}*/
 
 export function MenuCards(props) {
     let navigate = useNavigate();
 
     const handlePages = (lnk) => {
         navigate(lnk);
-        
-      }
+
+    }
 
     return (
         <div>
             <div>
                 <Grid container justifyContent={"center"} mt={"20vh"} alignItems={"center"}>
                     <Grid item md={8}>
-                        <Card style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/assets/Golan.jpg)` , width: '100%', height: 'auto'}} variant="elevation">
-                            <CardContent>
+                        <Card style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/assets/Golan.jpg)`, width: '100%', height: 'auto' }} variant="elevation">
+                            <CardContent sx={{ fontStyle: 'oblique' }}>
                                 <Stack spacing={2}>
                                     <h2>Welcome to golan heights</h2>
                                     <div>
@@ -72,12 +87,10 @@ export function MenuCards(props) {
             </div>
 
             {data.map((card) => (
-               
                 <Grid container justifyContent={"center"} mt={"10vh"} alignItems={"center"}>
-                    <Grid item md={8}>
-                        <Card style={{ backgroundImage: `url(${card.imgpath})` }} variant="elevation" onClick={() => handlePages(card.link)}
->
-                            <CardContent>
+                    <Grid sx={{ width: '100%', boxShadow: 3 }} item md={8}>
+                        <Card style={{ backgroundImage: `url(${card.imgpath})` }} variant="elevation" onClick={() => handlePages(card.link)} >
+                            <CardContent sx={{ fontStyle: 'oblique' }}>
                                 <Stack spacing={2}>
                                     <h2>{card.title}</h2>
                                     <div>
@@ -86,7 +99,6 @@ export function MenuCards(props) {
                                                 {p}
                                             </p>
                                         ))}
-                                        
                                     </div>
                                 </Stack>
                             </CardContent>
@@ -99,16 +111,16 @@ export function MenuCards(props) {
                 <Grid container justifyContent={"center"} mt={"10vh"} alignItems={"center"}>
                     <Grid item md={8}>
                         <Card style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/assets/writer.jpeg)` }} variant="elevation">
-                            <CardContent>
+                            <CardContent sx={{ fontStyle: 'oblique' }}>
                                 <Stack spacing={2}>
                                     <h2>Our Story</h2>
-                                    <div>
-                                        <p>We built this site to guide tourists for the good places in the golan.</p>
-                                        <p>The services you can get in this site are:
-                                            Hotels to rest and places to set with your family and enjoy,
-                                            Best places to visit,
-                                            A great activitise to do.</p>
-                                    </div>
+
+                                    <p>We built this site to guide tourists for the good places in the golan.</p>
+                                    <p>The services you can get in this site are:
+                                        Hotels to rest and places to set with your family and enjoy,
+                                        Best places to visit,
+                                        A great activitise to do.</p>
+
                                 </Stack>
                             </CardContent>
                         </Card>
@@ -118,25 +130,38 @@ export function MenuCards(props) {
 
             <div>
                 <Grid container justifyContent={"center"} mt={"10vh"} alignItems={"center"}>
-
-                    <Stack direction="row" spacing={5}>
-                        <Card style={{ backgroundColor: "white" }} variant="elevation">
-                            <CardContent>
-                                <h2>Welcome To Our Site</h2>
-                                <p>If you not have an account please</p>
-                                <p>If you forget your password</p>
-                            </CardContent>
-                        </Card>
-
-                        <Card style={{ backgroundColor: "white" }} variant="elevation">
-                            <CardContent>
-                                <h2>Welcome To Our Site</h2>
-                                <p>If you not have an account please</p>
-                                <p>If you forget your password</p>
-                            </CardContent>
-                        </Card>
+                    <Stack direction={{ xs: 'column', sm: 'row' }}
+                        spacing={{ xs: 2, sm: 5 }}>
+                        {partners.map((card) => (
+                            <Card sx={{ maxWidth: "50vh", width: autocompleteClasses }}>
+                                <CardMedia
+                                    component="img"
+                                    alt="an image"
+                                    height="140"
+                                //image="/public/assets/todo.jpg"
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        {card.title}
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        <div>
+                                            {card.body.map((p) => (
+                                                <p>
+                                                    {p}
+                                                </p>
+                                            ))}
+                                        </div>
+                                    </Typography>
+                                    <Typography>
+                                        <p>
+                                            {card.phonenumber}
+                                        </p>
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        ))}
                     </Stack>
-
                 </Grid>
             </div>
         </div>

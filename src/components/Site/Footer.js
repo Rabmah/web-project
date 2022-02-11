@@ -5,12 +5,13 @@ function Footer() {
   return (
     <div className="main-footer">
       <div className="container">
-          <p className="col-sm">
-            &copy;{new Date().getFullYear()} THICC MEMES | All rights reserved |
-            Terms Of Service | Privacy
-          </p>
+        <div className="footer">
+          <p>Terms Of Service</p>
+          <p>Privacy</p>
+          <p>All rights reserved &copy;{new Date().getFullYear()}</p>
+        </div>
       </div>
-    </div>
+    </div >
   );
 }
 
