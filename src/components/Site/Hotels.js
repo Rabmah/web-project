@@ -1,13 +1,13 @@
 import React from "react";
 import { Stack, Grid, Card, CardContent } from "@mui/material";
 import { NavBar } from "./AppBar";
-import { pages, settings } from "./Site";
+import { pages } from "./Site";
 import Footer from "./Footer";
 
 export function Hotels(props) {
     return (
         <div>
-            <NavBar pages={pages} settings={settings}></NavBar>
+            <NavBar pages={pages}></NavBar>
             <div>
                 <Grid container justifyContent={"center"} minHeight={"100vh"} alignItems={"center"}>
                     <Grid item md={4}>

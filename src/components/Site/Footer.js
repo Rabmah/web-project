@@ -6,8 +6,6 @@ function Footer() {
     <div className="main-footer">
       <div className="container">
         <div className="footer">
-          <p>Terms Of Service</p>
-          <p>Privacy</p>
           <p>All rights reserved &copy;{new Date().getFullYear()}</p>
         </div>
       </div>

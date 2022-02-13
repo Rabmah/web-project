@@ -4,18 +4,18 @@ import { useNavigate } from "react-router-dom";
 //import { Image } from "@mui/icons-material";
 const partners = [
     {
-        photo: `${process.env.PUBLIC_URL}/assets/food.jpg`,
+        photo: process.env.PUBLIC_URL + "/assets/roro.jpeg",
         title: "Jameel",
         body: ["Hello I'm enthusiastic to know if our site liked you or not.", "This is the first site to know about traviling in Golan Hights.",
             "Here is my phone number if you want to call me."],
-        phonenumber: "0507654321"
+        mail: "jameel@gmail.com"
     },
     {
-        photo: `${process.env.PUBLIC_URL}/assets/food.jpg`,
+        photo: process.env.PUBLIC_URL + "/assets/food.jpg",
         title: "Rabea",
         body: ["Hello every one please if you enjoy the site come back again.", "And dont forget to tell your frinds about as.",
             "Here is my phone number if you want to call me."],
-        phonenumber: "0501234567"
+        mail: "rabea@gmail.com"
     },
 ];
 
@@ -86,17 +86,18 @@ export function MenuCards(props) {
                 </Grid>
             </div>
 
-            {data.map((card) => (
-                <Grid container justifyContent={"center"} mt={"10vh"} alignItems={"center"}>
+            {data.map((card, i) => (
+                <Grid key={i} container justifyContent={"center"} mt={"10vh"} alignItems={"center"}>
                     <Grid sx={{ width: '100%', boxShadow: 3 }} item md={8}>
-                        <Card style={{ backgroundImage: `url(${card.imgpath})` }} variant="elevation" onClick={() => handlePages(card.link)} >
+                        <Card style={{ backgroundImage: `url(${card.imgpath})` }} variant="elevation"
+                            onClick={() => handlePages(card.link)}>
                             <CardContent sx={{ fontStyle: 'oblique' }}>
                                 <Stack spacing={2}>
                                     <h2>{card.title}</h2>
                                     <div>
-                                        {card.body.map((p) => (
-                                            <p>
-                                                {p}
+                                        {card.body.map((dis, j) => (
+                                            <p key={j}>
+                                                {dis}
                                             </p>
                                         ))}
                                     </div>
@@ -132,31 +133,23 @@ export function MenuCards(props) {
                 <Grid container justifyContent={"center"} mt={"10vh"} alignItems={"center"}>
                     <Stack direction={{ xs: 'column', sm: 'row' }}
                         spacing={{ xs: 2, sm: 5 }}>
-                        {partners.map((card) => (
-                            <Card sx={{ maxWidth: "50vh", width: autocompleteClasses }}>
+                        {partners.map((card, i) => (
+                            <Card sx={{ maxWidth: "50vh", width: autocompleteClasses }} key={i}>
                                 <CardMedia
                                     component="img"
                                     alt="an image"
-                                    height="140"
-                                //image="/public/assets/todo.jpg"
+                                    height="160"
+                                    image={card.photo}
                                 />
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="div">
                                         {card.title}
                                     </Typography>
                                     <Typography variant="body2" color="text.secondary">
-                                        <div>
-                                            {card.body.map((p) => (
-                                                <p>
-                                                    {p}
-                                                </p>
-                                            ))}
-                                        </div>
+                                        {card.body.join('\n')}
                                     </Typography>
                                     <Typography>
-                                        <p>
-                                            {card.phonenumber}
-                                        </p>
+                                        {card.mail}
                                     </Typography>
                                 </CardContent>
                             </Card>

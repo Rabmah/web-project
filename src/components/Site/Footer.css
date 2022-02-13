@@ -1,8 +1,9 @@
 .main-footer {
+  margin-top: 40px;
   color: white;
   background-color: #1976d2;
-  padding-top: 0.5em;
   width: 100%;
+  height: auto;
 }
 
 .container {
