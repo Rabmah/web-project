@@ -1,5 +1,6 @@
 import React from "react";
-import { Stack, Grid, Card, CardContent } from "@mui/material";
+import { Stack, Grid, Card, CardContent, CardMedia } from "@mui/material";
+
 import { useNavigate } from "react-router-dom";
 
 const hotels = [
@@ -17,7 +18,8 @@ const hotels = [
         contactInfo: "phone number: 0505129257 \n 0507769259 ",
         location: "Ein Kenia",
         site: "",
-        services: "",
+        services: "באפשרותכם ליהנות מארוחת בוקר כפרית עשירה ומגוונת המוגשת היישר לחדרי האירוח - להתחיל את היום עם חיוך ובאנרגיות שיא, כמו גם ארוחות ערב דרוזיות אוותנטיות ומפנקות. בנוסף, ניתן להזמין טיפולי ספא ועיסויים מפנקים ומרגיעים, לגוף ולנפש, הנעשים על ידי צוות מטפלים מקצועי ומנוסה. בתאום מראש ובתוספת תשלום. ",
+
     },
 
     {
@@ -26,7 +28,8 @@ const hotels = [
         contactInfo: "phone number: 0504422062 ",
         location: "Bokaata",
         site: "",
-        services: "",
+        services: "באפשרותכם ליהנות מארוחת בוקר כפרית עשירה ומגוונת המוגשת היישר לחדרי האירוח - להתחיל את היום עם חיוך ובאנרגיות שיא, כמו גם ארוחות ערב דרוזיות אוותנטיות ומפנקות. בנוסף, ניתן להזמין טיפולי ספא ועיסויים מפנקים ומרגיעים, לגוף ולנפש, הנעשים על ידי צוות מטפלים מקצועי ומנוסה. בתאום מראש ובתוספת תשלום. ",
+
     },
 
     {
@@ -35,33 +38,39 @@ const hotels = [
         contactInfo: "phone number: 0527283622 ",
         location: "Ein kenia",
         site: "https://oldschool-zimmer.com/",
-        services: "",
+        services: "באפשרותכם ליהנות מארוחת בוקר כפרית עשירה ומגוונת המוגשת היישר לחדרי האירוח - להתחיל את היום עם חיוך ובאנרגיות שיא, כמו גם ארוחות ערב דרוזיות אוותנטיות ומפנקות. בנוסף, ניתן להזמין טיפולי ספא ועיסויים מפנקים ומרגיעים, לגוף ולנפש, הנעשים על ידי צוות מטפלים מקצועי ומנוסה. בתאום מראש ובתוספת תשלום. ",
+
     },
 ];
 export function HotelCard(props) {
     let navigate = useNavigate();
-
     const handlePages = (lnk) => {
         navigate(lnk);
 
     }
     return (
         <div>
-            {hotels.map((hotels, i) => (
-                <Grid key={i} container justifyContent={"center"} mt={"10vh"} alignItems={"center"}>
-                    <Grid sx={{ width: '100%', boxShadow: 3 }} item md={8}>
-                        <Card style={{ backgroundImage: `url(${hotels.photo})` }} variant="elevation"
-                            onClick={() => handlePages(hotels.site)}>
+            <Grid container justifyContent={"center"} mt={"10vh"} alignItems={"center"}>
+                {hotels.map((hotels, i) => (
+                    <Grid key={i} sx={{ boxShadow: 3 }}  item md={5} mr={2} mb={2} ml={2}>
+                        <Card
+                            onClick={() => handlePages(hotels.site)} sx={{minHeight: "250", maxHeight: "450"}}>
+                            <CardMedia
+                                component="img"
+                                alt="an image"
+                                height="450"
+                                image={hotels.photo}
+                            />
                             <CardContent sx={{ fontStyle: 'oblique' }}>
                                 <Stack spacing={2}>
                                     <h2>{hotels.title}</h2>
-
+                                    <p>{hotels.services}</p>
                                 </Stack>
                             </CardContent>
                         </Card>
                     </Grid>
-                </Grid>
-            ))}
-        </div>
+                ))}
+            </Grid>
+        </div >
     );
 }

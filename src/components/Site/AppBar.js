@@ -25,6 +25,15 @@ export function NavBar(props) {
     if (page === 'Hotels') {
       navigate("/Site/Hotels");
     }
+    if (page === 'Restaurants') {
+      navigate("/Site/Restaurants");
+    }
+    if (page === 'Things to do') {
+      navigate("/Site/ThingsToDo");
+    }
+    if (page === 'Home') {
+      navigate("/Site");
+    }
   }
 
   const handleExit = () => {
@@ -36,7 +45,7 @@ export function NavBar(props) {
       <AppBar color="primary">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Typography
+            <Typography onClick={() =>handlePages("Home")}
               variant="h6"
               noWrap
               component="div"
@@ -81,7 +90,7 @@ export function NavBar(props) {
                 ))}
               </Menu>
             </Box>
-            <Typography
+            <Typography onClick={() =>handlePages("Home")}
               variant="h6"
               noWrap
               component="div"

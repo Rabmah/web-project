@@ -33,7 +33,7 @@ const data = [
         body: ["For a relaxing travil you have to get a good hotels.",
             "You can take the full time and don't waste your time to check if you want this restaurant.",
             "click to see the restaurants that give you the best meal you want."],
-        link: ""
+        link: "/Site/Restaurants"
     }
     ,
     {
@@ -43,7 +43,7 @@ const data = [
             "But they do not know what they can do in all the time of the year.",
             "For this we chose to you some places and tracks you can do",
             "check here"],
-        link: ""
+        link: "/Site/ThingsToDo"
     }
 ];
 
@@ -131,8 +131,8 @@ export function MenuCards(props) {
 
             <div>
                 <Grid container justifyContent={"center"} mt={"10vh"} alignItems={"center"}>
-                    <Stack direction={{ xs: 'column', sm: 'row' }}
-                        spacing={{ xs: 2, sm: 5 }}>
+                    <Stack direction={{ xs: 'column', md: 'row' }}
+                        spacing={{ xs: 2, md: 5 }}>
                         {partners.map((card, i) => (
                             <Card sx={{ maxWidth: "50vh", width: autocompleteClasses }} key={i}>
                                 <CardMedia

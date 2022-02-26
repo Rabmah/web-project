@@ -6,7 +6,9 @@ import { SignIn } from './components/authentication/SignIn';
 import { SignUp } from './components/authentication/SignUp';
 import { Site } from './components/Site/Site';
 import { ResetPassword } from './components/authentication/ResetPassword';
-import { Hotels } from './components/Site/Hotels'
+import { Hotels } from './components/Site/Hotels';
+import { Restaurants } from './components/Site/Restaurants';
+import {ThingsToDo } from './components/Site/ThingsToDo';
 
 ReactDOM.render(
   <Router>
@@ -16,6 +18,8 @@ ReactDOM.render(
       <Route path="/Site" element={<Site />} />
       <Route path="/ResetPassword" element={<ResetPassword />} />
       <Route path="/Site/Hotels" element={<Hotels />} />
+      <Route path="/Site/Restaurants" element={<Restaurants />} />
+      <Route path="/Site/ThingsToDo" element={<ThingsToDo />} />
 
     </Routes>
   </Router>,
