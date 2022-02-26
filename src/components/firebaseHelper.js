@@ -16,4 +16,6 @@ if (firebase.apps.length === 0)
     firebase.initializeApp(firebaseConfig);
 export const firebaseAuth = firebase.auth();
 const firebaseStore = firebase.firestore();
-export const usersCollection = firebaseStore.collection("users");
+export const hotelsCollection = firebaseStore.collection("hotels");
+export const restaurantsCollection = firebaseStore.collection("restaurants");
+export const thingstodoCollection = firebaseStore.collection("thingstodo");
