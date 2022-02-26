@@ -63,13 +63,15 @@ export function HotelCard(props) {
     const handlePages = (lnk) => {
         navigate(lnk);
     }
-    if (flag === false)
-        HotelsData().then((data) => { setflag(true); sethotel(data); }).catch(e => console.log(e));
+    if (flag === false) {
+        setflag(true);
+        HotelsData().then((data) => { sethotel(data); }).catch(e => console.log(e));
+    }
     return (
         <div>
             <Grid container justifyContent={"center"} mt={"10vh"} alignItems={"center"}>
                 {hotels2.map((hotels, i) => (
-                    <Grid key={i} sx={{ boxShadow: 3 }} item md={5} mr={2} mb={2} ml={2}>
+                    <Grid key={i} sx={{ boxShadow: 3 }} mt={"10vh"} item md={5} mr={2} mb={2} ml={2}>
                         <Card
                             onClick={() => handlePages(hotels.site)} sx={{ minHeight: "250", maxHeight: "450" }}>
                             <CardMedia
