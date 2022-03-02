@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 //import { Image } from "@mui/icons-material";
 const partners = [
     {
-        photo: process.env.PUBLIC_URL + "/assets/roro.jpeg",
+        photo: process.env.PUBLIC_URL + "/assets/photo1.jpg",
         title: "Jameel",
         body: ["Hello I'm enthusiastic to know if our site liked you or not.", "This is the first site to know about traviling in Golan Hights.",
             "Here is my phone number if you want to call me."],
         mail: "jameel@gmail.com"
     },
     {
-        photo: process.env.PUBLIC_URL + "/assets/food.jpg",
+        photo: process.env.PUBLIC_URL + "/assets/photo2.jpg",
         title: "Rabea",
         body: ["Hello every one please if you enjoy the site come back again.", "And dont forget to tell your frinds about as.",
             "Here is my phone number if you want to call me."],
@@ -47,14 +47,6 @@ const data = [
     }
 ];
 
-
-/*var cardStyle = {
-    display: 'block',
-    width: '150vw',
-    transitionDuration: '0.3s',
-    height: '150vw'
-}*/
-
 export function MenuCards(props) {
     let navigate = useNavigate();
 
@@ -68,7 +60,13 @@ export function MenuCards(props) {
             <div>
                 <Grid container justifyContent={"center"} mt={"20vh"} alignItems={"center"}>
                     <Grid item md={8}>
-                        <Card style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/assets/Golan.jpg)`, width: '100%', height: 'auto' }} variant="elevation">
+                        <Card variant="elevation">
+                            <CardMedia
+                                component="img"
+                                alt="an image"
+                                height="250"
+                                image="/assets/Golan.jpg"
+                            />
                             <CardContent sx={{ fontStyle: 'oblique' }}>
                                 <Stack spacing={2}>
                                     <h2>Welcome to golan heights</h2>
@@ -89,8 +87,14 @@ export function MenuCards(props) {
             {data.map((card, i) => (
                 <Grid key={i} container justifyContent={"center"} mt={"10vh"} alignItems={"center"}>
                     <Grid sx={{ width: '100%', boxShadow: 3 }} item md={8}>
-                        <Card style={{ backgroundImage: `url(${card.imgpath})` }} variant="elevation"
+                        <Card variant="elevation"
                             onClick={() => handlePages(card.link)}>
+                            <CardMedia
+                                component="img"
+                                alt="an image"
+                                height="250"
+                                image={card.imgpath}
+                            />
                             <CardContent sx={{ fontStyle: 'oblique' }}>
                                 <Stack spacing={2}>
                                     <h2>{card.title}</h2>
@@ -111,7 +115,13 @@ export function MenuCards(props) {
             <div>
                 <Grid container justifyContent={"center"} mt={"10vh"} alignItems={"center"}>
                     <Grid item md={8}>
-                        <Card style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/assets/writer.jpeg)` }} variant="elevation">
+                        <Card variant="elevation">
+                            <CardMedia
+                                component="img"
+                                alt="an image"
+                                height="250"
+                                image="/assets/writer.jpeg"
+                            />
                             <CardContent sx={{ fontStyle: 'oblique' }}>
                                 <Stack spacing={2}>
                                     <h2>Our Story</h2>

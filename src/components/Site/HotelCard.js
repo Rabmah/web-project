@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Stack, Grid, Card, CardContent, CardMedia } from "@mui/material";
-
-import { useNavigate } from "react-router-dom";
 import { hotelsCollection } from "../firebaseHelper";
 
 // const hotels = [
@@ -57,12 +55,9 @@ async function HotelsData() {
 }
 
 export function HotelCard(props) {
-    let navigate = useNavigate();
-    const [hotels2, sethotel] = useState([]);
+    const [hotels, sethotel] = useState([]);
     const [flag, setflag] = useState(false);
-    const handlePages = (lnk) => {
-        navigate(lnk);
-    }
+
     if (flag === false) {
         setflag(true);
         HotelsData().then((data) => { sethotel(data); }).catch(e => console.log(e));
@@ -70,20 +65,21 @@ export function HotelCard(props) {
     return (
         <div>
             <Grid container justifyContent={"center"} mt={"10vh"} alignItems={"center"}>
-                {hotels2.map((hotels, i) => (
+                {hotels.map((hotel, i) => (
                     <Grid key={i} sx={{ boxShadow: 3 }} mt={"10vh"} item md={5} mr={2} mb={2} ml={2}>
-                        <Card
-                            onClick={() => handlePages(hotels.site)} sx={{ minHeight: "250", maxHeight: "450" }}>
+                        <Card sx={{ minHeight: "250", maxHeight: "450" }}>
                             <CardMedia
                                 component="img"
                                 alt="an image"
-                                height="450"
-                                image={process.env.PUBLIC_URL + hotels.photo}
+                                height="350"
+                                image={process.env.PUBLIC_URL + hotel.photo}
                             />
                             <CardContent sx={{ fontStyle: 'oblique' }}>
                                 <Stack spacing={2}>
-                                    <h2>{hotels.title}</h2>
-                                    <p>{hotels.services}</p>
+                                    <h2>{hotel.title}</h2>
+                                    <p>{hotel.location}</p>
+                                    <p>{hotel.services}</p>
+                                    <p>{hotel.contactInfo}</p>
                                 </Stack>
                             </CardContent>
                         </Card>

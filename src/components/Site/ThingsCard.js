@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Stack, Grid, Card, CardContent, CardMedia } from "@mui/material";
+import { thingstodoCollection } from "../firebaseHelper";
 
-const things = [
+/*const things = [
     {
         photo: process.env.PUBLIC_URL + "/assets/Hermon.jpg",
         title: "אתר החרמון",
@@ -43,7 +44,7 @@ const things = [
         location: "מסעדה",
         contactInfo: "phone: 0507651273",
         length: "",
-        notices: "פארק קטיף עצמי – דובדבנים דובדבנים אורגנים טריים"
+        notices: "פארק קטיף עצמי – דובדבן – דובדבנים אורגנים טריים חוויה לא תמצאו באף מקום, לכל משהוא שרוצה להגיע בבקשה ההזמנות מראש."
     },
 
     {
@@ -55,26 +56,47 @@ const things = [
         notices: "אתר קטיף עצמי של דובדבנים במטעי הכפר מסעדה. ניתן לקיים פיקניק במקום עם אוכל דרוזי מסורתי (בהזמנה מראש)."
     },
 
-];
-export function ThingsCard(props) {
+];*/
 
+async function ThingsData() {
+    const hotel = (await thingstodoCollection.get()).docs;
+    console.log(hotel);
+    let result = [];
+    for (let i = 0; i < hotel.length; i++) {
+        const data = hotel[i].data();
+        console.log(data);
+        result.push(data);
+    }
+    return result;
+}
+
+export function ThingsCard(props) {
+    const [things, setthing] = useState([]);
+    const [flag, setflag] = useState(false);
+
+    if (flag === false) {
+        setflag(true);
+        ThingsData().then((data) => { setthing(data); }).catch(e => console.log(e));
+    }
     return (
         <div>
             <Grid container justifyContent={"center"} mt={"10vh"} alignItems={"center"}>
-                {things.map((things, i) => (
+                {things.map((thing, i) => (
                     <Grid key={i} sx={{ boxShadow: 3 }} mt={"10vh"} item md={5} mr={2} mb={2} ml={2}>
-                        <Card
-                            sx={{ minHeight: "250", maxHeight: "450" }}>
+                        <Card sx={{ minHeight: "450", maxHeight: "450" }}>
                             <CardMedia
                                 component="img"
                                 alt="an image"
-                                height="450"
-                                image={things.photo}
+                                height="350"
+                                image={thing.photo}
                             />
                             <CardContent sx={{ fontStyle: 'oblique' }}>
                                 <Stack spacing={2}>
-                                    <h2>{things.title}</h2>
-                                    <p>{things.notices}</p>
+                                    <h2>{thing.title}</h2>
+                                    <p>{thing.location}</p>
+                                    <p>{thing.notices}</p>
+                                    <p>{thing.length}</p>
+                                    <p>{thing.contactInfo}</p>
                                 </Stack>
                             </CardContent>
                         </Card>
