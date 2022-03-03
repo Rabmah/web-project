@@ -57,6 +57,7 @@ export function SignIn(props) {
                                 <label htmlFor="password"><b>Password</b></label>
                                 <Input id="password" placeholder="password" type="password"></Input>
                                 <Button style={{ Width: "auto", fontWeight: 'medium' }} onClick={() => { handleSignIn(setIsopen, setErrors) }}>Sign in</Button>
+                                <Button style={{ Width: "auto", fontWeight: 'medium' }} onClick={() => { navigate('/Anonymous') }}>Login with out Email</Button>
                                 <div>
                                     If you not have an account please
                                     <Link to="/SignUp"> sign up</Link>

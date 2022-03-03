@@ -82,7 +82,7 @@ export function ThingsCard(props) {
         <div>
             <Grid container justifyContent={"center"} mt={"10vh"} alignItems={"center"}>
                 {things.map((thing, i) => (
-                    <Grid key={i} sx={{ boxShadow: 3 }} mt={"10vh"} item md={5} mr={2} mb={2} ml={2}>
+                    <Grid key={i} sx={{ boxShadow: 3 }} item md={5} mr={2} mt={2} ml={2}>
                         <Card sx={{ minHeight: "450", maxHeight: "450" }}>
                             <CardMedia
                                 component="img"

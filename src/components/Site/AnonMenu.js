@@ -1,22 +1,8 @@
-import { autocompleteClasses, Card, CardContent, CardMedia, Grid, Stack, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import {
+    Card, CardContent,
+    CardMedia, Grid, Stack
+} from "@mui/material";
 
-const partners = [
-    {
-        photo: process.env.PUBLIC_URL + "/assets/photo1.jpg",
-        title: "Jameel",
-        body: ["Hello I'm enthusiastic to know if our site liked you or not.", "This is the first site to know about traviling in Golan Hights.",
-            "Here is my phone number if you want to call me."],
-        mail: "jameel@gmail.com"
-    },
-    {
-        photo: process.env.PUBLIC_URL + "/assets/photo2.jpg",
-        title: "Rabea",
-        body: ["Hello every one please if you enjoy the site come back again.", "And dont forget to tell your frinds about as.",
-            "Here is my phone number if you want to call me."],
-        mail: "rabea@gmail.com"
-    },
-];
 
 const data = [
     {
@@ -46,13 +32,7 @@ const data = [
     }
 ];
 
-export function MenuCards(props) {
-    let navigate = useNavigate();
-
-    const handlePages = (lnk) => {
-        navigate(lnk);
-
-    }
+export function AnonMenu(props) {
 
     return (
         <div>
@@ -86,8 +66,7 @@ export function MenuCards(props) {
             {data.map((card, i) => (
                 <Grid key={i} container justifyContent={"center"} alignItems={"center"}>
                     <Grid sx={{ width: '100%', boxShadow: 3 }} item md={8} mr={2} mt={2} ml={2}>
-                        <Card variant="elevation"
-                            onClick={() => handlePages(card.link)}>
+                        <Card variant="elevation" >
                             <CardMedia
                                 component="img"
                                 alt="an image"
@@ -135,35 +114,6 @@ export function MenuCards(props) {
                             </CardContent>
                         </Card>
                     </Grid>
-                </Grid>
-            </div>
-
-            <div>
-                <Grid container justifyContent={"center"} mt={"5vh"} alignItems={"center"}>
-                    <Stack direction={{ xs: 'column', md: 'row' }} mr={2} ml={2}
-                        spacing={{ xs: 2, md: 5 }}>
-                        {partners.map((card, i) => (
-                            <Card sx={{ maxWidth: "50vh", width: autocompleteClasses }} key={i}>
-                                <CardMedia
-                                    component="img"
-                                    alt="an image"
-                                    height="160"
-                                    image={card.photo}
-                                />
-                                <CardContent>
-                                    <Typography gutterBottom variant="h5" component="div">
-                                        {card.title}
-                                    </Typography>
-                                    <Typography variant="body2" color="text.secondary">
-                                        {card.body.join('\n')}
-                                    </Typography>
-                                    <Typography>
-                                        {card.mail}
-                                    </Typography>
-                                </CardContent>
-                            </Card>
-                        ))}
-                    </Stack>
                 </Grid>
             </div>
         </div>

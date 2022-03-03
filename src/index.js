@@ -8,7 +8,8 @@ import { Site } from './components/Site/Site';
 import { ResetPassword } from './components/authentication/ResetPassword';
 import { Hotels } from './components/Site/Hotels';
 import { Restaurants } from './components/Site/Restaurants';
-import {ThingsToDo } from './components/Site/ThingsToDo';
+import { ThingsToDo } from './components/Site/ThingsToDo';
+import { Anonymous } from './components/Site/Anonymous';
 
 ReactDOM.render(
   <Router>
@@ -20,6 +21,7 @@ ReactDOM.render(
       <Route path="/Site/Hotels" element={<Hotels />} />
       <Route path="/Site/Restaurants" element={<Restaurants />} />
       <Route path="/Site/ThingsToDo" element={<ThingsToDo />} />
+      <Route path="/Anonymous" element={<Anonymous />} />
 
     </Routes>
   </Router>,
