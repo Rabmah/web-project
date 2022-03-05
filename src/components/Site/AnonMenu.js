@@ -50,11 +50,8 @@ export function AnonMenu(props) {
                                 <Stack spacing={2}>
                                     <h2>Welcome to golan heights</h2>
                                     <div>
-                                        <p>We built this site to guide tourists for the good places in the golan.</p>
-                                        <p>The services you can get in this site are:
-                                            Hotels to rest and places to set with your family and enjoy,
-                                            Best places to visit,
-                                            A great activitise to do.</p>
+                                        <p>Golan Hights is the farest place in israel and is not familiar to the tourists.</p>
+                                        <p>We built this site to guide and give the tourists an information about things they can do.</p>
                                     </div>
                                 </Stack>
                             </CardContent>

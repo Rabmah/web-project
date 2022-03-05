@@ -51,7 +51,7 @@ export function SignIn(props) {
                     <Card style={{ background: "rgba(255,255,255,.7)" }} variant="elevation">
                         <CardContent>
                             <Stack spacing={2}>
-                                <h2>Welcome To Our Site</h2>
+                                <h2>Tourism in the Golan Hieght</h2>
                                 <label htmlFor="email"><b>Email</b></label>
                                 <Input id="email" placeholder="email" type="email"></Input>
                                 <label htmlFor="password"><b>Password</b></label>
