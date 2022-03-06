@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Alert, Button, Card, CardContent, Grid, Input, Snackbar, Stack } from "@mui/material";
-//import { Delete, Person } from "@mui/icons-material";
 import { firebaseAuth } from "../firebaseHelper";
 import { useNavigate } from "react-router-dom";
 import background from "../../pictuers/golanH.png";

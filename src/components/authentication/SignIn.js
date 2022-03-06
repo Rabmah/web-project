@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Alert, Button, Card, CardContent, Grid, Input, Snackbar, Stack } from "@mui/material";
-//import { Delete } from "@mui/icons-material";
 import { firebaseAuth } from "../firebaseHelper";
 import { Link, useNavigate } from "react-router-dom";
 import background from "../../pictuers/golanH.png";
@@ -51,7 +50,7 @@ export function SignIn(props) {
                     <Card style={{ background: "rgba(255,255,255,.7)" }} variant="elevation">
                         <CardContent>
                             <Stack spacing={2}>
-                                <h2>Tourism in the Golan Hieght</h2>
+                                <h2>Tourism in the Golan Height</h2>
                                 <label htmlFor="email"><b>Email</b></label>
                                 <Input id="email" placeholder="email" type="email"></Input>
                                 <label htmlFor="password"><b>Password</b></label>
