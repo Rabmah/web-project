@@ -6,14 +6,14 @@ const partners = [
         photo: process.env.PUBLIC_URL + "/assets/photo1.jpg",
         title: "Jameel",
         body: ["Hello I'm enthusiastic to know if our site liked you or not.", "This is the first site to know about traviling in Golan Hights.",
-            "Here is my phone number if you want to call me."],
+            "Here is my email if you want to communicate with me."],
         mail: "jameel@gmail.com"
     },
     {
         photo: process.env.PUBLIC_URL + "/assets/photo2.jpg",
         title: "Rabea",
         body: ["Hello every one please if you enjoy the site come back again.", "And dont forget to tell your frinds about as.",
-            "Here is my phone number if you want to call me."],
+            "Here is my email if you want to communicate with me."],
         mail: "rabea@gmail.com"
     },
 ];
