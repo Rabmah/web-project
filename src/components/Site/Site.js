@@ -11,10 +11,9 @@ export function Site(props) {
   let navigate = useNavigate();
   useEffect(() => {
     return firebaseAuth.onAuthStateChanged(u => {
-      if (u) {
-      } else {
-        navigate("/");
-      }
+      if (!u) {
+        navigate("/")
+      } 
     })
   })
   return (
